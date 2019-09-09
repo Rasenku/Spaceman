@@ -81,7 +81,7 @@ def spaceman(secret_word):
     print("---------------------------------------")
     player_input = input("Enter your a letter:")
     print(player_input)
-    print(len(player_input))aaaa
+    print(len(player_input)))
 
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
