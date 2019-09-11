@@ -157,7 +157,7 @@ while play_again:
 
     # call spaceman
     play_again = input(colors.pink + "Would you like to play again?").lower()
-    if play_again == "yes":
+    if play_again == "yes" or play_again == "y":
         play_again = True
     else:
         play_again = False
