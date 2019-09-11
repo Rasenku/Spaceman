@@ -106,12 +106,22 @@ def spaceman(secret_word):
     while guesses_left > 0:
 
         #TODO: show the player information about the game according to the project spec
-        player_input = input(colors.yellow + "Enter a letter:")
+        player_input = ""
 
 
         #TODO: Ask the player to guess one letter per round and check that it is only one letter
-        if len(player_input) > 1:
-            print("Error Please enter one letter")
+        more_than_one_letter = True
+        while more_than_one_letter:
+
+            player_input = input(colors.yellow + "Enter a letter:")
+
+
+            if len(player_input) > 1:
+                print("Error Please enter one letter")
+
+
+            else:
+                more_than_one_letter = False
 
 
 
