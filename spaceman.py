@@ -1,5 +1,19 @@
 import random
 
+
+class colors:
+    purple = '\033[30m'
+    green = '\033[32m'
+    yellow = '\033[93m'
+    pink = '\033[95m'
+    grey = '\033[37m'
+    red = '\033[31m'
+
+
+
+
+
+
 def load_word():
     '''
     A function that reads a text file of words and randomly selects one to use as the secret word
@@ -80,10 +94,11 @@ def spaceman(secret_word):
     Args:
       secret_word (string): the secret word to guess.
     '''
-    print("Welcome to Spaceman!")
-    print("The secret word contains: {} letters".format(len(secret_word)))
-    print("You have 7 guesses left, please enter one letter per round")
-    print("---------------------------------------")
+    print(colors.green + "Welcome to Spaceman!")
+    print("CAN YOU GUESS THE SECRET WORD? ONLY TIME WILL TELL")
+    print(colors.pink + "The secret word contains: {} letters".format(len(secret_word)))
+    print(colors.yellow + "You have 7 guesses left, enter one letter per round")
+    print(colors.pink + "---------------------------------------")
     guesses_left = 7
 
     letters_guessed = []
@@ -91,7 +106,7 @@ def spaceman(secret_word):
     while guesses_left > 0:
 
         #TODO: show the player information about the game according to the project spec
-        player_input = input("Enter a letter:")
+        player_input = input(colors.yellow + "Enter a letter:")
 
 
         #TODO: Ask the player to guess one letter per round and check that it is only one letter
@@ -102,26 +117,37 @@ def spaceman(secret_word):
 
         #TODO: Check if the guessed letter is in the secret word or not and give the player feedback
         if is_guess_in_word(player_input,secret_word):
-            print("Nice! You guessed a letter correctly")
+            print(colors.green,"Nice! You guessed a letter correctly")
             letters_guessed.append(player_input)
 
 
             if is_word_guessed(secret_word, letters_guessed):
-                print("Congratulations! You guessed the secret word correctly")
+                print(colors.green,"Congratulations! You guessed the secret word correctly")
                 break
 
 
         else:
-            print("Sorry! You guessed a letter wrong try again")
+            print(colors.red,"LOL! You guessed a letter wrong try again")
             guesses_left -=1
-        print(get_guessed_word(secret_word, letters_guessed))
-        print("guesses left, "+str(guesses_left))
+        print(colors.green + get_guessed_word(secret_word, letters_guessed))
+        print(colors.pink + "guesses left, "+str(guesses_left))
     else:
-        print("You lost! You guessed the secret word wrong")
-        print("The correct word is, "+secret_word)
+        print("You lost LOL! You guessed the secret word wrong LOL")
+        print(colors.red,"The correct word is, "+secret_word)
         #TODO: show the guessed word so far
 
     #TODO: check if the game has been won or lost
 #These function calls that will star t the game
-secret_word = load_word()
-spaceman(secret_word)
+
+
+play_again = True
+while play_again:
+    secret_word = load_word()
+    spaceman(secret_word)
+
+    # call spaceman
+    play_again = input(colors.pink + "Would you like to play again?").lower()
+    if play_again == "yes":
+        play_again = True
+    else:
+        play_again = False
